@@ -118,11 +118,14 @@ while True:
             cv2.destroyWindow('Red Light Overlay')
 
 
-    # if show_red_overlay:
-    #     red_overlay = cv2.bitwise_and(frame, frame, mask=red_mask)
-    #     cv2.imshow('Red Light Overlay', red_overlay)
-    # else:
-    #     cv2.destroyWindow('Red Light Overlay')
+    if show_red_overlay:
+        red_overlay = cv2.bitwise_and(frame, frame, mask=red_mask)
+        cv2.imshow('Red Light Overlay', red_overlay)
+    else:
+        try:
+            cv2.destroyWindow('Red Light Overlay')
+        except:
+            pass
 
     # Show final frame
     cv2.imshow('Final Frame', frame)
@@ -135,8 +138,8 @@ while True:
         show_blur = not show_blur
     elif key == ord('3'):
         show_thresh = not show_thresh
-    # elif key == ord('4'):
-    #     show_red_mask = not show_red_mask
+    elif key == ord('4'):
+        show_red_mask = not show_red_mask
     elif key == ord('5'):
         show_red_overlay = not show_red_overlay
     elif key == ord('q'):
